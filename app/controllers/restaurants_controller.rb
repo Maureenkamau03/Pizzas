@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_method
+  skip_before_action :verify_authenticity_token
 
   #GET all Restaurants
   def index
@@ -30,7 +31,7 @@ class RestaurantsController < ApplicationController
 
   # DELETE
   def destroy
-      restaurant = Restaurant.find_by!(id: params[:id])
+      restaurant = Restaurant.find_by(id: params[:id])
       restaurant.destroy
       render json: restaurant, status: :no_content
   end

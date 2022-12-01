@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :pizzas, only: [:index, :show]
   resources :restaurants, only: [:index, :show, :create, :destroy]
-  resources :restaurant_pizzas
+  resources :restaurant_pizzas, only: [:index, :show, :destroy, :create] 
 end
