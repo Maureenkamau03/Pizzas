@@ -32,11 +32,11 @@ class RestaurantPizzasController < ApplicationController
       params.permit(:price, :pizza_id, :restaurant_id)
   end
   # error
-  # def record_not_found
-  #   render json: {error: "RestaurantPizza Not Found"}, status: :not_found
-  # end
+  def record_not_found
+    render json: {error: "RestaurantPizza Not Found"}, status: :not_found
+  end
   
-  # def unprocessable_entity_method entity
-  #     render json: {errors: entity.record.errors}, status: :unprocessable_entity
-  # end
+  def unprocessable_entity_method entity
+      render json: {errors: entity.record.errors}, status: :unprocessable_entity
+  end
 end
